@@ -1,0 +1,18 @@
+.toolbar-spacer {
+    flex: 1 1 auto;
+  }
+  
+  a.title {
+    color: white;
+  }
+
+  .title{
+    display: block;
+    text-align: center;
+    color: white;
+
+  }
+
+  ::ng-deep .cdk-overlay-pane{
+    position: sticky !important;
+  }

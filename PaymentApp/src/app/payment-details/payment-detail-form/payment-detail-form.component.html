@@ -1,0 +1,92 @@
+<style>
+  /* Apply styles to all input fields */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+}
+
+/* Style the submit button */
+button.btn-success {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* Style the "List All" button */
+button.btn-danger {
+  background-color: #FF5733;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* Remove the blue outline on focus */
+input:focus {
+  outline: none;
+}
+
+/* Add background color and text color to focused input */
+input:focus {
+  background-color: lightblue;
+}
+
+/* Add a border to focused input */
+input:focus {
+  border: 3px solid #555;
+}
+
+</style>
+
+
+<form #form="ngForm" (submit)="onSubmit(form)" [class.submitted]="service.formSubmitted" novalidate autocomplete="off">
+  <input type="hidden" name="paymentDetailId" [value]="service.formData.paymentDetailId">
+  <div class="mb-3">
+    <label>Card Owner Name</label>
+    <input class="form-control form-control-lg" placeholder="Name on Card" #cardOwnerName="ngModel" name="cardOwnerName"
+      [(ngModel)]="service.formData.cardOwnerName" required>
+  </div>
+  <div class="mb-3">
+    <label>Card Number</label>
+    <input class="form-control form-control-lg" placeholder="16 Digit Card Number" #cardNumber="ngModel"
+      name="cardNumber" [(ngModel)]="service.formData.cardNumber" required minlength="16" maxlength="16">
+  </div>
+
+  <div class="row">
+    <div class="mb-3 col-6">
+      <label>Security Code</label>
+      <input class="form-control form-control-lg" placeholder="CVV" type="password" #securityCode="ngModel"
+        name="securityCode" [(ngModel)]="service.formData.securityCode" required minlength="3" maxlength="3">
+    </div>
+    <div class="mb-3 col-6">
+      <label>Valid Through</label>
+      <input class="form-control form-control-lg" placeholder="MM/YY" #expirationDate="ngModel" name="expirationDate"
+        [(ngModel)]="service.formData.expirationDate" required minlength="5" maxlength="5">
+    </div>
+  </div>
+  <div class="d-grid">
+    <button class="btn btn-lg btn-success" type="submit">
+      Submit
+    </button>
+  </div>
+
+</form>
+<!-- <a href="/list">Lsit All</a> -->
+<div class="text-center">
+<a href="/list">
+<button class="btn btn-lg btn-danger" type="button" >
+  List All
+</button>
+</a>
+</div>
